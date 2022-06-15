@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   issues:
     types:
-      [  opened,edited, labeled,   unlabeled,  assigned, unassigned,milestoned,demilestoned,reopened, closed, ]
+      [  open, closed, ]
 
 jobs:
   notion_job:
