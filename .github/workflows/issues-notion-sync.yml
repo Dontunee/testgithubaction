@@ -1,11 +1,6 @@
 - name: Notion x GitHub Action
-  # You may pin to the exact commit or the version.
-  # uses: tryfabric/notion-github-action@00c625609f7350e8a8970049e386a0c5f81cdff3
   uses: tryfabric/notion-github-action@v1.2.1
   with:
-    # Your Notion API Token
     notion-token: ${{ secrets.NOTION_TOKEN }}
-    # The Notion database id
     notion-db: ${{ secrets.NOTION_DATABASE }}
-    # Your GitHub personal access token
     github-token:  ${{ github.token }}
