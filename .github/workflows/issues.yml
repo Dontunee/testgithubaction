@@ -1,0 +1,9 @@
+- name: Notion x GitHub Action
+  uses: tryfabric/notion-github-action@v1.2.1
+  with:
+    # Your Notion API Token
+    notion-token: ${{ secrets.NOTION_TOKEN }}
+    # The Notion database id
+    notion-db: ${{ secrets.NOTION_DATABASE1 }}
+    # Your GitHub personal access token
+    github-token: # optional, default is ${{ github.token }}
