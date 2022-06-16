@@ -1,13 +1,29 @@
-on: [push]
+name: Notion Sync
+
+on:
+  workflow_dispatch:
+  issues:
+    types:
+      [
+        opened,
+        edited,
+        labeled,
+        unlabeled,
+        assigned,
+        unassigned,
+        milestoned,
+        demilestoned,
+        reopened,
+        closed,
+      ]
 
 jobs:
-  Notion_Hook_job:
+  notion_job:
     runs-on: ubuntu-latest
-    name: A job to connect to Notion
+    name: Add GitHub Issues to Notion
     steps:
-      - name: Connect to Notion step
-        id: notion
-        uses: alessandrobelli/NotionHook@1.0
+      - name: Add GitHub Issues to Notion
+        uses: instantish/notion-github-action@v1
         with:
-          notion_secret: ${{ secrets.NOTION_SECRET }}
-          notion_database: ${{ secrets.NOTION_DATABASE }}
+          notion-token: ${{ secrets.NOTION_TOKEN }}
+          notion-db: ${{ secrets.NOTION_DATABASE }}
