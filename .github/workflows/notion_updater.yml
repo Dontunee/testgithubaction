@@ -14,11 +14,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
-        run: |
-            echo "${{github.event.pull_request.title.body}}!"
-            echo "${{github.event.pull_request.commits_url}}!"
-            echo "${{github.event.pull_request.url}}!"
       - name: Update Notion Ticket
       - run: |
           curl --location --request PATCH 'https://api.notion.com/v1/pages/${{github.event.pull_request.title.body}}' \
