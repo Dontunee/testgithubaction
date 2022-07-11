@@ -15,10 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
       - name: Update Notion Ticket
-      - run: |
+        run: |
           body= ${{github.event.pull_request.title.body}}
           echo ${body}
           curl --location --request PATCH 'https://api.notion.com/v1/pages/${{github.event.pull_request.title.body}}' \
