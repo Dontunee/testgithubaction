@@ -16,9 +16,14 @@ jobs:
     steps:
       - name: Update Notion Ticket
         run: |
-          PAGE=$(curl --location --request GET 'https://api.notion.com/v1/pages/a94812cb42484a80a27b78a61b714b56' \
+          PAGE=$(curl --location --request GET 'https://api.notion.com/v1/pages/${{github.event.pull_request.body}}' \
           --header 'Notion-Version: 2022-06-28' \
           --header 'Authorization: Bearer secret_PmRKcbYJOfxNrrDU3YkCaVZCvKXXDhXzyGdq5aE1gP8')
           
-          echo $PAGE
+          echo $PAGE.id
+           curl --location --request PATCH 'https://api.notion.com/v1/pages/$PAGE.id' \
+          --header 'Notion-Version: 2022-06-28' \
+          --header 'Authorization: Bearer secret_PmRKcbYJOfxNrrDU3YkCaVZCvKXXDhXzyGdq5aE1gP8' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{"properties": {"Status": {"select": {"name": "Code Review 🧑‍💻"}},"Git Branch": {"url": {"name": "${{github.event.pull_request.commits_url}}"}},"Pull Request": {"url": {"name": "${{github.event.pull_request.url}}"} }}}'
       
