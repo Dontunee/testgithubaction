@@ -4,7 +4,10 @@ on:
   pull_request:
     branches: [ "main" ]
     types: [opened]
-
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
 env:
   NOTION_API_BASE: https://api.notion.com/v1/
   NOTION_SECRET: secret_PmRKcbYJOfxNrrDU3YkCaVZCvKXXDhXzyGdq5aE1gP8
@@ -19,7 +22,7 @@ jobs:
     steps:
       - name: Update Notion Ticket
         run: |
-         var=$(curl --location --request GET "${NOTION_API_BASE}pages/${github.event.pull_request.body}" \
+         var=$(curl --location --request GET "${NOTION_API_BASE}pages/b746db528f9b47909e557312c58baff6" \
           --header $API_VERSION \
           --header 'Authorization: Bearer $NOTION_SECRET'| jq -r .id) || exit
          echo $var
