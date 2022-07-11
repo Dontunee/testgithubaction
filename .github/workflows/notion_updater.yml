@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: Update Notion Ticket
         run: |
-         var=$(curl --location --request GET "${{secrets.NOTION_API_BASE}}pages/b746db528f9b47909e557312c58baff6" \
+         var=$(curl --location --request GET "${secrets.NOTION_API_BASE}pages/b746db528f9b47909e557312c58baff6" \
           --header 'Notion-Version: 2022-06-28' \
           --header 'Authorization: Bearer ${NOTION_SECRET}'| jq -r .id) || exit
          echo $var
-          curl --location --request PATCH "${{secrets.NOTION_API_BASE}}pages/${var}" \
+          curl --location --request PATCH "${secrets.NOTION_API_BASE}pages/${var}" \
           --header 'Notion-Version: 2022-06-28' \
           --header 'Authorization: Bearer ${NOTION_SECRET}' \
           --header 'Content-Type: application/json' \
