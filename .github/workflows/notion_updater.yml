@@ -17,7 +17,6 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
-        
       - name: Update Notion Ticket
       - run: |
           curl --location --request PATCH 'https://api.notion.com/v1/pages/${{github.event.pull_request.title.body}}' \
