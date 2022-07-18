@@ -12,7 +12,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      BODY: ${{ github.event.pull_request.body }}
+      BODY: "Howdy fellow engineer!🔗 🎫 [Link to Ticket/Story]https://www.notion.so/Current-Sprint-f735bd6cd5d044e89a981c66c28b2fd1?v=51ef94e0bfe448e4ad5f26fc7cdad084&p=b746db528f9b47909e557312c58baff6"
       token: "${{ secrets.NOTION_SECRET }}"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -20,6 +20,7 @@ jobs:
     steps:
       - name: Update Notion Ticket
         run: |
+          echo ${BODY}
           ticketNumber=${BODY} | grep -Eo "(\\&)([^=]+)\=([^&p]+)" | head -1 | cut -c 4- 
           echo $ticketNumber
           var=$(curl --location --request GET "https://api.notion.com/v1/pages/${ticketNumber}" \
