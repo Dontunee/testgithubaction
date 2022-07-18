@@ -25,7 +25,7 @@ jobs:
           echo ${token}
           echo ${{secrets.NOTION_SECRET}} | sed 's/./& /g' 
           echo ${token} | sed -e 's/\(.\)/\1 /g'
-          if [ "$token" == "***" ]
+          if [ "$token" == "tunde" ]
             then 
             echo "got secret"
             fi
