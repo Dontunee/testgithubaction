@@ -11,14 +11,14 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    env:
+      BODY: ${{ github.event.pull_request.body }}
+      token: "${{ secrets.NOTION_SECRET }}"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     steps:
       - name: Update Notion Ticket
-        env:
-          BODY: ${{ github.event.pull_request.body }}
-          token: "${{ secrets.NOTION_SECRET }}"
         run: |
           echo ${BODY%%.*}
           ticketNumber=${BODY%%.*}
