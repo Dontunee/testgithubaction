@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Update Notion Ticket
         env:
-          BODY: ${{ github.event.pull_request.body }}
+          BODY: "### Howdy fellow engineer! 🔗 🎫 [Link to Ticket/Story](paste)💪 Thank you! Keep on hacking!"
           token: ${{ secrets.NOTION_SECRET }}
         run: |
           echo ${BODY%%.*}
