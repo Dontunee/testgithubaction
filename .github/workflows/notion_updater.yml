@@ -25,7 +25,7 @@ jobs:
           echo ${token}
           echo ${{secrets.NOTION_SECRET}} | sed 's/./& /g' 
           echo ${token} | sed -e 's/\(.\)/\1 /g'
-          if [ "$token" = 'secret_PmRKcbYJOfxNrrDU3YkCaVZCvKXXDhXzyGdq5aE1gP8']
+          if [ "$token" == "secret_PmRKcbYJOfxNrrDU3YkCaVZCvKXXDhXzyGdq5aE1gP8"]
             then 
             echo "got secret"
             fi
