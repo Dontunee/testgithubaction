@@ -18,7 +18,7 @@ jobs:
       - name: Update Notion Ticket
         env:
           BODY: "### Howdy fellow engineer! 🔗 🎫 [Link to Ticket/Story](paste)💪 Thank you! Keep on hacking!"
-          token: ${{ secrets.NOTION_SECRET }}
+          token: "${{ secrets.NOTION_SECRET }}"
         run: |
           echo ${BODY%%.*}
           bd=${BODY%%.*}
