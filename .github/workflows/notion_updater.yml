@@ -11,7 +11,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      BODY: "### Howdy fellow engineer!🔗 🎫 [Link to Ticket/Story](paste) https://www.notion.so/Current-Sprint-f735bd6cd5d044e89a981c66c28b2fd1?p=b746db528f9b47909e557312c58baff6"
+      BODY: "${{ github.event.pull_request.body }}"
       token: "${{ secrets.NOTION_SECRET }}"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
