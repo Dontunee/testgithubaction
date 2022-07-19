@@ -24,6 +24,7 @@ jobs:
           base_url="$base_url_part$ticketNumber"
           echo b:: $base_url
           var=$(curl --location --request GET "$base_url" \
+          --globoff \
           --header 'Notion-Version: 2022-06-28' \
           --header "Authorization: Bearer $token"| jq -r .id) || exit
           echo $var
