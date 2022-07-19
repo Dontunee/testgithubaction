@@ -3,7 +3,7 @@ name: notion_ticket_updater
 on:
   pull_request_target:
     branches: [ "master", "main", "development"]
-    types: [opened, reopened]
+    types: [opened, reopened, edited, synchronize]
   workflow_call:
 
 jobs:
