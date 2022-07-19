@@ -2,7 +2,7 @@ name: notion_ticket_updater
 
 on:
   pull_request_target:
-    branches: [ "main" ]
+    branches: [ "master", "main", "development"]
     types: [opened, reopened]
   workflow_call:
 
@@ -10,7 +10,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     env:
-      BODY: "Howdy fellow engineer!🔗 🎫 [Link to Ticket/Story]https://www.notion.so/Current-Sprint-f735bd6cd5d044e89a981c66c28b2fd1?v=51ef94e0bfe448e4ad5f26fc7cdad084&p=b746db528f9b47909e557312c58baff6"
+      BODY: ${{ github.event.pull_request.body }}
       token: "${{ secrets.NOTION_SECRET }}"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -29,5 +29,3 @@ jobs:
           --header "Authorization: Bearer $token" \
           --header 'Content-Type: application/json' \
           --data-raw '{"properties": {"Status": {"select": {"name": "Code Review 🧑‍💻"}},"Git Branch": {"url": "${{github.event.pull_request.commits_url}}"},"Pull Request": {"url": "${{github.event.pull_request.url}}"}}}'
-
-
